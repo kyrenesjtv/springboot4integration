@@ -4,3 +4,4 @@ springboot与其他东西集成<br/>
 1.SpringBoot集成(1)—-开始搭建一个SpringBoot项目<br/>
 2.SpringBoot集成(2)—-构建RESTFUL API与单元测试<br/>
 3.SpringBoot集成(3)—-使用Swagger2构建强大的RESTful API文档<br/>
+4.SpringBoot集成(4)—-添加全局异常处理和Logback.xml日志<br/>

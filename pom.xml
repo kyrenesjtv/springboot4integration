@@ -24,6 +24,7 @@
 		<version.mybatis-spring-boot-starter>1.1.1</version.mybatis-spring-boot-starter>
 		<version.druid>1.0.18</version.druid>
 		<version.jedis>2.9.0</version.jedis>
+		<version.junit>4.9</version.junit>
 		<version.commons-pool2>2.4.3</version.commons-pool2>
 		<java.version>1.8</java.version>
 	</properties>
@@ -92,6 +93,12 @@
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-pool2</artifactId>
 			<version>${version.commons-pool2}</version>
+		</dependency>
+		<!-- junit 模块 -->
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>${version.junit}</version>
 		</dependency>
 	</dependencies>
 

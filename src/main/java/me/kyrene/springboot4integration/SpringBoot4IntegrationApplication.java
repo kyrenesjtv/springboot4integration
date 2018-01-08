@@ -18,7 +18,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 import javax.sql.DataSource;
 
 @EnableAutoConfiguration
-@EnableTransactionManagement//开启注解
+@EnableTransactionManagement(proxyTargetClass = true)//开启注解并且使用cglib代理
 @SpringBootApplication
 @ComponentScan
 @MapperScan("me.kyrene.springboot4integration.DAO") // 用于扫描mybatis的Mapper

@@ -7,3 +7,4 @@ springboot与其他东西集成<br/>
 4.SpringBoot集成(4)—-添加全局异常处理和Logback.xml日志<br/>
 5.SpringBoot集成(5)—-Redis的添加(Jedis操作)<br/>
 6.SpringBoot集成(6)—-事务的处理<br/>
+7.SpringBoot集成(7)—-springboot自己的mail<br/>

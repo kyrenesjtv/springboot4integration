@@ -35,13 +35,13 @@ public class UserServiceIMPL implements IUserService {
     }
 
     @Override
-    @Transactional(value = "TMManager1")
+    //@Transactional(value = "TMManager1")
     public int deleteUserByID(Long id) {
         return userDAO.deleteUserByID(id);
     }
 
     @Override
-    @Transactional(value = "TMManager1")
+    //@Transactional(value = "TMManager1")
     public int insertUser(User user) {
         return userDAO.insertUser(user);
     }

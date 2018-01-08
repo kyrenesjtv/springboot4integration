@@ -1,4 +1,4 @@
-package me.kyrene.springboot4integration.common;
+package me.kyrene.springboot4integration;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;

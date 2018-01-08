@@ -1,4 +1,4 @@
-package me.kyrene.springboot4integration;
+package me.kyrene.springboot4integration.common;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

@@ -6,3 +6,4 @@ springboot与其他东西集成<br/>
 3.SpringBoot集成(3)—-使用Swagger2构建强大的RESTful API文档<br/>
 4.SpringBoot集成(4)—-添加全局异常处理和Logback.xml日志<br/>
 5.SpringBoot集成(5)—-Redis的添加(Jedis操作)<br/>
+6.SpringBoot集成(6)—-事务的处理<br/>

@@ -1,4 +1,4 @@
-package me.kyrene.springboot4integration;
+package me.kyrene.springboot4integration.common;
 
 import com.alibaba.druid.pool.DruidDataSource;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -13,10 +13,12 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 
 @EnableAutoConfiguration
+@EnableTransactionManagement//开启注解
 @SpringBootApplication
 @ComponentScan
 @MapperScan("me.kyrene.springboot4integration.DAO") // 用于扫描mybatis的Mapper
@@ -27,7 +29,7 @@ public class SpringBoot4IntegrationApplication {
 	}
 
 	@Bean
-	@ConfigurationProperties(prefix = "spring.datasource")
+	@ConfigurationProperties(prefix = "spring.datasource")//加载application.propertis
 	public DataSource dataSource() {
 		return new DruidDataSource();
 	}
@@ -50,7 +52,7 @@ public class SpringBoot4IntegrationApplication {
 	 * 事务管理
 	 * @return
 	 */
-	@Bean
+	@Bean(name = "TMManager1")
 	public PlatformTransactionManager transactionManager() {
 		return new DataSourceTransactionManager(dataSource());
 	}

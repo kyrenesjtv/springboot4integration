@@ -5,7 +5,7 @@
 
 	<groupId>me.kyrene.springboot4integration</groupId>
 	<artifactId>springboot4integration</artifactId>
-	<version>0.0.5-SNAPSHOT</version>
+	<version>0.0.6-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
 	<name>SpringBoot4Integration</name>
@@ -99,6 +99,11 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>${version.junit}</version>
+		</dependency>
+		<!-- jdbc 模块 -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-jdbc</artifactId>
 		</dependency>
 	</dependencies>
 

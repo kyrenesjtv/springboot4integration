@@ -1,4 +1,4 @@
-package me.kyrene.springboot4integration.redis;
+package me.kyrene.springboot4integration.utils.redis;
 
 import java.io.IOException;
 import java.io.InputStream;

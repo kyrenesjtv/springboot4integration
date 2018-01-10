@@ -1,7 +1,6 @@
 package me.kyrene.springboot4integration.quartz.job;
 
 import me.kyrene.springboot4integration.pojo.User;
-import me.kyrene.springboot4integration.quartz.trigger.simple.SimpleTriggerTest;
 import me.kyrene.springboot4integration.service.IUserService;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;

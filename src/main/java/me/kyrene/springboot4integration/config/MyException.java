@@ -1,4 +1,4 @@
-package me.kyrene.springboot4integration.configure;
+package me.kyrene.springboot4integration.config;
 
 /**
  * Created by wanglin on 2017/12/29.

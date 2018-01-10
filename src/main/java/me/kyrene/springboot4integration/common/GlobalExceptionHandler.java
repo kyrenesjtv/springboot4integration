@@ -1,6 +1,6 @@
 package me.kyrene.springboot4integration.common;
 
-import me.kyrene.springboot4integration.configure.MyException;
+import me.kyrene.springboot4integration.config.MyException;
 import me.kyrene.springboot4integration.pojo.ErrorInfo;
 import org.apache.catalina.servlet4preview.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.ControllerAdvice;

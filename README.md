@@ -9,3 +9,4 @@ springboot与其他东西集成<br/>
 6.SpringBoot集成(6)—-事务的处理<br/>
 7.SpringBoot集成(7)—-springboot自己的mail<br/>
 8.SpringBoot集成(8)—-springboot集成quartz<br/>
+9.SpringBoot集成(9)—-springboot-session-redis实现信息共享<br/>

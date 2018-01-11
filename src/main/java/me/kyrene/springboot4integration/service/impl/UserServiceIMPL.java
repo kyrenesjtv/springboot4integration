@@ -1,10 +1,10 @@
 package me.kyrene.springboot4integration.service.impl;
 
 import me.kyrene.springboot4integration.DAO.UserDAO;
+import me.kyrene.springboot4integration.aspect.annotation.RedisCache;
 import me.kyrene.springboot4integration.pojo.User;
 import me.kyrene.springboot4integration.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -24,6 +24,7 @@ public class UserServiceIMPL implements IUserService {
     }
 
     @Override
+    @RedisCache
     public User getUserByID(Long id) {
         return userDAO.getUserByID(id);
     }

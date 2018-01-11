@@ -4,6 +4,7 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import me.kyrene.springboot4integration.pojo.User;
+import me.kyrene.springboot4integration.service.IUserService;
 import me.kyrene.springboot4integration.service.impl.UserServiceIMPL;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -18,12 +19,12 @@ import java.util.List;
 public class UserController {
 
     @Autowired
-    private UserServiceIMPL userServiceIMPL;
+    private IUserService userService;
 
     @ApiOperation(value = "获取所有用户", notes = "")//方法描述
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public List<User> getAllUsers() {
-        return userServiceIMPL.getAllUsers();
+        return userService.getAllUsers();
 
     }
 
@@ -31,7 +32,7 @@ public class UserController {
     @ApiImplicitParam(name = "id", value = "用户id", required = true, dataType = "Long")//参数描述
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public User getUserByID(@PathVariable Long id) {
-        return userServiceIMPL.getUserByID(id);
+        return userService.getUserByID(id);
     }
 
     @ApiOperation(value = "更新用户", notes = "根据UserID更新用户")
@@ -41,25 +42,25 @@ public class UserController {
     })
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public int updateUserByID(@PathVariable Long id, @ModelAttribute User user) {
-        User user1 = userServiceIMPL.getUserByID(id);
+        User user1 = userService.getUserByID(id);
         if (user != null) {
             user1.setAge(user.getAge());
             user1.setName(user.getName());
         }
-        return userServiceIMPL.updateUserByID(user1);
+        return userService.updateUserByID(user1);
     }
 
     @ApiOperation(value = "删除用户", notes = "根据UserID删除用户")
     @ApiImplicitParam(name = "id", value = "用户id", required = true, dataType = "Long")//参数描述
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public int deleteUserByID(@PathVariable Long id) {
-        return userServiceIMPL.deleteUserByID(id);
+        return userService.deleteUserByID(id);
     }
 
     @ApiOperation(value = "新建用户", notes = "需要传入除ID以外的参数,id自增长")
     @ApiImplicitParam(name = "user", value = "user对象", required = true, dataType = "User")//参数描述
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public int insertUser(@ModelAttribute User user) {
-        return userServiceIMPL.insertUser(user);
+        return userService.insertUser(user);
     }
 }

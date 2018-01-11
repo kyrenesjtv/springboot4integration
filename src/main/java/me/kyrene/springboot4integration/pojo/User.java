@@ -1,9 +1,11 @@
 package me.kyrene.springboot4integration.pojo;
 
+import java.io.Serializable;
+
 /**
  * Created by wanglin on 2017/12/27.
  */
-public class User {
+public class User implements Serializable{
     private Long id;
     private String name;
     private Integer age;

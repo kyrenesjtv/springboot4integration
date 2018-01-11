@@ -14,7 +14,7 @@
 // */
 //@Component
 //public class SimpleTriggerTest {
-//    private static Logger logger = LoggerFactory.getLogger(SimpleTriggerTest.class);
+//    private final static Logger LOGGER = LoggerFactory.getLogger(SimpleTriggerTest.class);
 //
 //
 //    @Resource(name = "scheduler")
@@ -22,7 +22,7 @@
 //
 //    @PostConstruct
 //    public void init() {
-//        logger.info("加载定时任务开始");
+//        LOGGER.info("加载定时任务开始");
 //        try {
 //            //Scheduler scheduler = schedulerBean.getScheduler();
 //            TriggerKey triggerKey = TriggerKey.triggerKey("quartz-lxh", Scheduler.DEFAULT_GROUP);
@@ -33,9 +33,9 @@
 //
 //            scheduler.scheduleJob(jobDetail, trigger);
 //        } catch (Exception e) {
-//            logger.info("定时任务加载失败，请手动加载！\n");
-//            logger.info("定时任务加载异常:", e);
+//            LOGGER.info("定时任务加载失败，请手动加载！\n");
+//            LOGGER.info("定时任务加载异常:", e);
 //        }
-//        logger.info("加载定时任务结束");
+//        LOGGER.info("加载定时任务结束");
 //    }
 //}

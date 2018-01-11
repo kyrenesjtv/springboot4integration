@@ -1,9 +1,11 @@
 package me.kyrene.springboot4integration.pojo;
 
+import java.io.Serializable;
+
 /**
  * Created by wanglin on 2017/12/29.
  */
-public class ErrorInfo<T> {
+public class ErrorInfo<T> implements Serializable{
     private Integer code;
     private String message;
     private String url;

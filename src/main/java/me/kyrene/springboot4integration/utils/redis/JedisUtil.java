@@ -1,12 +1,17 @@
 package me.kyrene.springboot4integration.utils.redis;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import redis.clients.jedis.*;
 
 import java.util.Properties;
+
 /**
  * Created by wanglin on 2018/1/2.
  */
 public class JedisUtil {
+    private static final Logger LOGGER = LoggerFactory.getLogger(JedisUtil.class);
+
     private static JedisPool jedisPool = null;
 
     private static final JedisUtil jedisUtil = new JedisUtil();
@@ -81,17 +86,20 @@ public class JedisUtil {
      * @param key
      * @param value
      */
-    public void set(String key, String value) {
+    public String set(String key, String value) {
         Jedis jedis = null;
+        String result = null;
         try {
             jedis = getJedis();
-            jedis.set(key, value);
+            result = jedis.set(key, value);
         } catch (Exception e) {
+            LOGGER.info(e.getMessage());
             close(jedis);
             e.printStackTrace();
         } finally {
             returnResource(jedis);
         }
+        return result;
     }
 
     /**
@@ -107,6 +115,52 @@ public class JedisUtil {
             jedis = getJedis();
             result = jedis.get(key);
         } catch (Exception e) {
+            LOGGER.info(e.getMessage());
+            close(jedis);
+            e.printStackTrace();
+        } finally {
+            returnResource(jedis);
+        }
+        return result;
+    }
+
+    /**
+     * 用于cache获取数据
+     *
+     * @param key
+     * @return
+     */
+    public byte[] getDataFromRedis(byte[] key) {
+        Jedis jedis = null;
+        byte[] result = null;
+        try {
+            jedis = getJedis();
+            result = jedis.get(key);
+        } catch (Exception e) {
+            LOGGER.info(e.getMessage());
+            close(jedis);
+            e.printStackTrace();
+        } finally {
+            returnResource(jedis);
+        }
+        return result;
+    }
+
+    /**
+     * 用于cache设置数据
+     *
+     * @param key
+     * @param value
+     * @return
+     */
+    public String setDataToRedis(byte[] key, byte[] value) {
+        Jedis jedis = null;
+        String result = null;
+        try {
+            jedis = getJedis();
+            result = jedis.set(key, value);
+        } catch (Exception e) {
+            LOGGER.info(e.getMessage());
             close(jedis);
             e.printStackTrace();
         } finally {

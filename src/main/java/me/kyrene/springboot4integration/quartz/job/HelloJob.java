@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
  */
 @Component //实例化到容器中
 public class HelloJob implements Job {
-	private static Logger logger = LoggerFactory.getLogger(HelloJob.class);
+	private static Logger LOGGER = LoggerFactory.getLogger(HelloJob.class);
 	@Autowired
 	IUserService userService;
 
@@ -22,7 +22,7 @@ public class HelloJob implements Job {
 	public void execute(JobExecutionContext context) throws JobExecutionException {
 		String name=context.getJobDetail().getJobDataMap().getString("name");
 		User userByID = userService.getUserByID(4L);
-		logger.info(userByID.toString());
+		LOGGER.info(userByID.toString());
 	}
 
 }

@@ -15,7 +15,7 @@
 // */
 //@Component//加载到spring容器中 作为一个bean
 //public class CronTriggerTest {
-//	private static Logger logger = LoggerFactory.getLogger(CronTriggerTest.class);
+//	private final static Logger LOGGER = LoggerFactory.getLogger(CronTriggerTest.class);
 //
 //
 //	@Resource(name = "scheduler")
@@ -23,7 +23,7 @@
 //
 //	@PostConstruct
 //	public void init() {//项目启动启动
-//		logger.info("加载定时任务开始");
+//		LOGGER.info("加载定时任务开始");
 //		try {
 //			//Scheduler scheduler = schedulerBean.getScheduler();
 //			TriggerKey triggerKey = TriggerKey.triggerKey("quartz-lxh", Scheduler.DEFAULT_GROUP);
@@ -33,11 +33,11 @@
 //			jobDetail.getJobDataMap().put("name", "quartz-lxh");
 //
 //			scheduler.scheduleJob(jobDetail, trigger);
-//			logger.info("task 'quartz-lxh' schedulerRule :'*/10 * * * * ?' reload succeed");
+//			LOGGER.info("task 'quartz-lxh' schedulerRule :'*/10 * * * * ?' reload succeed");
 //		} catch (Exception e) {
-//			logger.info("定时任务加载失败，请手动加载！\n");
-//			logger.info("定时任务加载异常:", e);
+//			LOGGER.info("定时任务加载失败，请手动加载！\n");
+//			LOGGER.info("定时任务加载异常:", e);
 //		}
-//		logger.info("定时任务加载完成");
+//		LOGGER.info("定时任务加载完成");
 //	}
 //}

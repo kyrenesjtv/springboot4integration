@@ -40,6 +40,17 @@ public class RedisCache {
         return code;
     }
 
+    /**
+     * 从redis中删除数据
+     * @param redisKey
+     * @return
+     */
+    public Long deleteDataFromRedis(String redisKey ){
+        JedisUtil jedis = JedisUtil.getInstance();
+        Long redult = jedis.deleteDataFromRedis(redisKey);
+        return redult;
+    }
+
 //    @Test
 //    public void test01(){
 //        User user = new User();

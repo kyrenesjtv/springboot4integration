@@ -168,4 +168,25 @@ public class JedisUtil {
         }
         return result;
     }
+
+    /**
+     * 从redis中删除数据
+     * @param key
+     * @return
+     */
+    public Long deleteDataFromRedis(String key) {
+        Jedis jedis = null;
+        Long result = null;
+        try {
+            jedis = getJedis();
+            result = jedis.del(key);
+        } catch (Exception e) {
+            LOGGER.info(e.getMessage());
+            close(jedis);
+            e.printStackTrace();
+        } finally {
+            returnResource(jedis);
+        }
+        return result;
+    }
 }

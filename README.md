@@ -10,4 +10,4 @@ springboot与其他东西集成<br/>
 7.SpringBoot集成(7)—-springboot自己的mail<br/>
 8.SpringBoot集成(8)—-springboot集成quartz<br/>
 9.SpringBoot集成(9)—-springboot-session-redis实现信息共享<br/>
-10.SpringBoot集成(10)—-redis缓存,减少访问数据库(目前只支持查询缓存,采用的是aop)<br/>
+10.SpringBoot集成(10)—-redis缓存,减少访问数据库(采用的是aop,beat2版本，支持增删改查，但是对于service层多参数有待解决)<br/>

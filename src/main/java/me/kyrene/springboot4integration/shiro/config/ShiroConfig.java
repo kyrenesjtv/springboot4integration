@@ -1,8 +1,6 @@
 package me.kyrene.springboot4integration.shiro.config;
 
-import me.kyrene.springboot4integration.shiro.realm.AuthRealm;
 import org.apache.shiro.authc.credential.CredentialsMatcher;
-import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.LifecycleBeanPostProcessor;
 import org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
@@ -11,8 +9,6 @@ import org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreato
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import java.util.LinkedHashMap;
 
 /**
  * Created by wanglin on 2018/1/17.
@@ -24,24 +20,18 @@ public class ShiroConfig {
         ShiroFilterFactoryBean bean=new ShiroFilterFactoryBean();
         bean.setSecurityManager(manager);
         //配置登录的url和登录成功的url
-        bean.setLoginUrl("/html/login.html");
-        bean.setSuccessUrl("/html/index.html");
-        bean.setUnauthorizedUrl("/html/unauthorized.html");
+        bean.setLoginUrl("/login");
+        bean.setSuccessUrl("/home");
         //配置访问权限
         LinkedHashMap<String, String> filterChainDefinitionMap=new LinkedHashMap<>();
-        filterChainDefinitionMap.put(" /html/authImg", "anon");
-        filterChainDefinitionMap.put("/css/**", "anon");
-        filterChainDefinitionMap.put("/img/**", "anon");
-        filterChainDefinitionMap.put("/js/**","anon");
-        filterChainDefinitionMap.put("/plugins/**","anon");
-        filterChainDefinitionMap.put("/html/login.html","anon");
-        filterChainDefinitionMap.put("/html/index.html", "user");
-        filterChainDefinitionMap.put("/html/roleadmin.html", "roles[\"admin\"]");
-        filterChainDefinitionMap.put("/html/permissionadmin.html", "perms[\"user:create\"]");
-        filterChainDefinitionMap.put("/html/useradmin.html", "user");
-        filterChainDefinitionMap.put("/users/**", "user");
-        filterChainDefinitionMap.put("/logout", "logout");
-        filterChainDefinitionMap.put("/**", "anon");
+        filterChainDefinitionMap.put("/jsp/login.jsp*", "anon"); //表示可以匿名访问
+        filterChainDefinitionMap.put("/loginUser", "anon");
+        filterChainDefinitionMap.put("/logout*","anon");
+        filterChainDefinitionMap.put("/jsp/error.jsp*","anon");
+        filterChainDefinitionMap.put("/jsp/index.jsp*","authc");
+        filterChainDefinitionMap.put("/*", "authc");//表示需要认证才可以访问
+        filterChainDefinitionMap.put("/**", "authc");//表示需要认证才可以访问
+        filterChainDefinitionMap.put("/*.*", "authc");
         bean.setFilterChainDefinitionMap(filterChainDefinitionMap);
         return bean;
     }
@@ -55,16 +45,16 @@ public class ShiroConfig {
     }
     //配置自定义的权限登录器
     @Bean(name="authRealm")
-    public AuthRealm authRealm() {
+    public AuthRealm authRealm(@Qualifier("credentialsMatcher") CredentialsMatcher matcher) {
         AuthRealm authRealm=new AuthRealm();
-        // authRealm.setCredentialsMatcher(matcher);
+        authRealm.setCredentialsMatcher(matcher);
         return authRealm;
     }
     //配置自定义的密码比较器
-    //    @Bean(name="credentialsMatcher")
-    //    public CredentialsMatcher credentialsMatcher() {
-    //        return new CredentialsMatcher();
-    //    }
+    @Bean(name="credentialsMatcher")
+    public CredentialsMatcher credentialsMatcher() {
+        return new CredentialsMatcher();
+    }
     @Bean
     public LifecycleBeanPostProcessor lifecycleBeanPostProcessor(){
         return new LifecycleBeanPostProcessor();
@@ -81,6 +71,5 @@ public class ShiroConfig {
         advisor.setSecurityManager(manager);
         return advisor;
     }
-
 
 }

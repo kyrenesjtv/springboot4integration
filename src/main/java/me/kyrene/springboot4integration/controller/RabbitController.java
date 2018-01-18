@@ -1,10 +1,7 @@
 package me.kyrene.springboot4integration.controller;
 
 import me.kyrene.springboot4integration.pojo.User;
-import me.kyrene.springboot4integration.rabbitMQ.sender.HelloSender01;
-import me.kyrene.springboot4integration.rabbitMQ.sender.HelloSender02;
-import me.kyrene.springboot4integration.rabbitMQ.sender.TopicSender01;
-import me.kyrene.springboot4integration.rabbitMQ.sender.UserSender01;
+import me.kyrene.springboot4integration.rabbitMQ.sender.*;
 import me.kyrene.springboot4integration.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -32,6 +29,9 @@ public class RabbitController {
 
     @Autowired
     private TopicSender01 topicSender;
+
+    @Autowired
+    private FanoutSender fanoutSender;
 
     /**
      * 一对一
@@ -89,6 +89,15 @@ public class RabbitController {
     @RequestMapping("/topic")
     public String topic() {
         topicSender.send();
+        return "OK";
+    }
+
+    /**
+     * fanoutExchange类型rabbitmq测试
+     */
+    @RequestMapping("/fanout")
+    public String fanout() {
+        fanoutSender.send();
         return "OK";
     }
 

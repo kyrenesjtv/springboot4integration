@@ -12,3 +12,4 @@ springboot与其他东西集成<br/>
 9.SpringBoot集成(9)—-springboot-session-redis实现信息共享<br/>
 10.SpringBoot集成(10)—-redis缓存,减少访问数据库(采用的是aop,beat2版本，支持增删改查，但是对于service层多参数有待解决)<br/>
 11.SpringBoot集成(11)—-增加小功能(alibba-druid监控)<br/>
+12.SpringBoot集成(12)—-集成RabbitMQ（四种消息队列）<br/>

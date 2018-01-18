@@ -11,17 +11,27 @@ import org.springframework.context.annotation.Configuration;
 public class RabitConfig {
 
     @Bean
-    public Queue helloQueue(){
+    public Queue helloQueue() {
         return new Queue("hello");//对应路由
     }
 
     @Bean
-    public Queue helloQueue2(){
+    public Queue helloQueue2() {
         return new Queue("hello2");
     }
 
     @Bean
-    public Queue userQueue(){
+    public Queue userQueue() {
         return new Queue("user");
+    }
+
+    @Bean
+    public Queue queueMessage() {
+        return new Queue("topic.message");
+    }
+
+    @Bean
+    public Queue queueMessages() {
+        return new Queue("topic.messages");
     }
 }

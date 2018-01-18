@@ -1,0 +1,6 @@
+CREATE TABLE `tb_user` (
+  `id` bigint(255) NOT NULL AUTO_INCREMENT,
+  `age` int(11) DEFAULT NULL,
+  `name` varchar(255) DEFAULT '',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;

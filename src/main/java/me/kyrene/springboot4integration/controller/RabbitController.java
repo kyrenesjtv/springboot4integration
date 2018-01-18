@@ -3,6 +3,7 @@ package me.kyrene.springboot4integration.controller;
 import me.kyrene.springboot4integration.pojo.User;
 import me.kyrene.springboot4integration.rabbitMQ.sender.HelloSender01;
 import me.kyrene.springboot4integration.rabbitMQ.sender.HelloSender02;
+import me.kyrene.springboot4integration.rabbitMQ.sender.TopicSender01;
 import me.kyrene.springboot4integration.rabbitMQ.sender.UserSender01;
 import me.kyrene.springboot4integration.service.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,10 @@ public class RabbitController {
 
     @Autowired
     private UserSender01 userSender01;
+
+
+    @Autowired
+    private TopicSender01 topicSender;
 
     /**
      * 一对一
@@ -75,6 +80,15 @@ public class RabbitController {
     public String userTest() {
         User user = userService.getUserByID(4L);
         userSender01.Send(user);
+        return "OK";
+    }
+
+    /**
+     * TopicExchange类型rabbitmq测试
+     */
+    @RequestMapping("/topic")
+    public String topic() {
+        topicSender.send();
         return "OK";
     }
 

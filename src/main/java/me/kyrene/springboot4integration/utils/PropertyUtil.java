@@ -1,4 +1,4 @@
-package me.kyrene.springboot4integration.utils.redis;
+package me.kyrene.springboot4integration.utils;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

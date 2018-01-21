@@ -1,5 +1,6 @@
 package me.kyrene.springboot4integration.utils.redis;
 
+import me.kyrene.springboot4integration.utils.PropertyUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import redis.clients.jedis.*;

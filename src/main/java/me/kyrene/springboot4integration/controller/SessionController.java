@@ -21,7 +21,7 @@ import java.util.concurrent.ConcurrentHashMap;
 public class SessionController extends BaseController {
 
     @RequestMapping(value = "/putSession", method = RequestMethod.PUT)
-    public Map<String, Integer> putSession(@RequestParam String name, @RequestParam Integer age) {
+    public Map<String, Integer> putSession(@RequestParam(name = "name" ) String name, @RequestParam(name = "age" ) Integer age) {
         Map<String, Integer> map = null;
         if (name != null && age != null) {
             map = new ConcurrentHashMap<>();
@@ -41,7 +41,7 @@ public class SessionController extends BaseController {
     }
 
     @RequestMapping(value = "/putRedis", method = RequestMethod.PUT)
-    public String putRedis(@RequestParam String name, @RequestParam Integer age) {
+    public String putRedis(@RequestParam(name = "name" ) String name, @RequestParam(name = "age" ) Integer age) {
         JedisUtil jedis = JedisUtil.getInstance();
         if (name != null && age != null) {
             jedis.set(name, String.valueOf(age));
@@ -50,7 +50,7 @@ public class SessionController extends BaseController {
     }
 
     @RequestMapping(value = "/getRedis", method = RequestMethod.GET)
-    public String getRedis(@RequestParam String name) {
+    public String getRedis(@RequestParam(name = "name" ) String name) {
         JedisUtil jedis = JedisUtil.getInstance();
         String value = super.getParameter(name);
         String result = null;

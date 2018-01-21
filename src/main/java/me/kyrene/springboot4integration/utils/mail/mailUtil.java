@@ -1,6 +1,6 @@
 package me.kyrene.springboot4integration.utils.mail;
 
-import me.kyrene.springboot4integration.utils.redis.PropertyUtil;
+import me.kyrene.springboot4integration.utils.PropertyUtil;
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSenderImpl;

@@ -1,6 +1,7 @@
 package me.kyrene.springboot4integration;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import com.github.tobato.fastdfs.FdfsClientConfig;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.annotation.MapperScan;
@@ -11,8 +12,11 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.EnableMBeanExport;
+import org.springframework.context.annotation.Import;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
+import org.springframework.jmx.support.RegistrationPolicy;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
@@ -24,6 +28,9 @@ import javax.sql.DataSource;
 @ComponentScan
 @MapperScan("me.kyrene.springboot4integration.DAO") // 用于扫描mybatis的Mapper
 @ServletComponentScan
+@EnableMBeanExport(registration = RegistrationPolicy.IGNORE_EXISTING)//解决jmx重复注册bean的问题
+@Import(FdfsClientConfig.class)//只需要一行注解 @Import(FdfsClientConfig.class)就可以拥有带有连接池的FastDFS Java客户端了
+
 public class SpringBoot4IntegrationApplication {
 
 	public static void main(String[] args) {

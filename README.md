@@ -14,3 +14,4 @@ springboot与其他东西集成<br/>
 11.SpringBoot集成(11)—-增加小功能(alibba-druid监控)<br/>
 12.SpringBoot集成(12)—-集成RabbitMQ（四种消息队列）<br/>
 13.SpringBoot集成(13)—-集成elasticSearch<br/>
+14.SpringBoot集成(14)—-增加fastDFS<br/>

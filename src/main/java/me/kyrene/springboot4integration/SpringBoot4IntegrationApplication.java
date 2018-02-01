@@ -10,10 +10,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.web.servlet.ServletComponentScan;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.EnableMBeanExport;
-import org.springframework.context.annotation.Import;
+import org.springframework.context.annotation.*;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.jmx.support.RegistrationPolicy;
@@ -30,7 +27,8 @@ import javax.sql.DataSource;
 @ServletComponentScan
 @EnableMBeanExport(registration = RegistrationPolicy.IGNORE_EXISTING)//解决jmx重复注册bean的问题
 @Import(FdfsClientConfig.class)//只需要一行注解 @Import(FdfsClientConfig.class)就可以拥有带有连接池的FastDFS Java客户端了
-
+@ImportResource({"classpath:dubbo-service.xml"})//dubbo服务提供方
+//@ImportResource({"classpath:dubbo-customer.xml"})//dubbo服务消费方
 public class SpringBoot4IntegrationApplication {
 
 	public static void main(String[] args) {

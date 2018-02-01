@@ -15,3 +15,4 @@ springboot与其他东西集成<br/>
 12.SpringBoot集成(12)—-集成RabbitMQ（四种消息队列）<br/>
 13.SpringBoot集成(13)—-集成elasticSearch<br/>
 14.SpringBoot集成(14)—-增加fastDFS<br/>
+15.SpringBoot集成(15)—-增加dubbo<br/>
